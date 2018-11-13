@@ -10,7 +10,7 @@ router.get('/users', function (req, res){
         console.log(userList);
         for(i =0; i< userList.length; i++){
             console.log(userList[i].first_name);
-            document.getElementById('.kudosFromList').innerHTML(userList[i].first_name)
+            
         }
     })
     .catch(function(err){
