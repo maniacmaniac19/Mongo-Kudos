@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const kudosSchema = new Schema({
     title: String,
     body: String,
-users: [
+to: [
     {
         type:Schema.Types.ObjectId,
         ref: "users"

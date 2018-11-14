@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="style.css">
+  </head>
 <body>
 
         <div class="modal" tabindex="-1" role="dialog">
@@ -21,19 +22,19 @@
                     <div class="modal-body">
                       <form>
                           <form-group>
-                                <select class="custom-select kudosToList">
-                                        <option selected>To:</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                      </select>
-                                      <select class="custom-select kudosFromList">
-                                            <option selected>From:</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                          </select>
+                              <label>To:</label>
+                                <select class="custom-select kudosToList"></select>
+                                <label>From:</label>
+                                      <select class="custom-select kudosFromList"></select>        
                           </form-group>
+                          <div class="form-group">
+                              <label >Title</label>
+                              <input class="kudosTitle form-control" type="text" placeholder="Title">
+                            </div>
+                          <div class="form-group">
+                              <label >Kudos:</label>
+                              <textarea class="form-control kudosBody" rows="3"></textarea>
+                            </div>
                       </form>
                     </div>
                     <div class="modal-footer">
@@ -45,7 +46,7 @@
               </div>
 
 
-
+              <div class="fromOptions"></div>
 
     <button class="addKudos"data-toggle="modal" data-target=".modal">Give Kudos!</button>
     <div class='kudosList'></div>
