@@ -25,7 +25,8 @@ router.get('/users', function (req, res){
 
 router.get('/kudos', function(req, res){
     db.kudos.find({})
-    .populate('users')
+    .populate('to')
+    // add populate from
     .then(function(data){
         res.json(data);
     })
@@ -38,14 +39,14 @@ router.post('/kudos', function(req, res){
     console.log(req.body)
     const userId = req.body.userId;
     const kudosNote = {
-        to: req.body.to,
+        // to: req.body.to,
         title: req.body.title,
         body: req.body.body
     }
     db.kudos.create(kudosNote)
-    .then(function(kudosData){
-        return users.findOneAndUpdate({_id:userId}, { $push: { kudos: kudosData._id}}, {new: true});
-    })
+    // .then(function(kudosData){
+    //     return users.findOneAndUpdate({_id:userId}, { $push: { kudos: kudosData._id}}, {new: true});
+    // })
     .then(function(usersData){
         res.json(usersData);
     })

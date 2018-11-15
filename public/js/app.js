@@ -32,8 +32,8 @@ $('.postKudos').on('click', function(event){
         url: '/kudos',
         data: data
 }).then(function(response){
-    console.log(response)
-    console.log(data)
+    // console.log(response)
+    // console.log(data)
     console.log('this is the response from the server')
     // data.to.val('')
     // data.title.val('')
@@ -51,7 +51,7 @@ $(document).ready(function(){
         // console.log(response)
         JSON.stringify(response, null, 2)
         for(i=0; i< response.length; i++){
-            console.log(response[i])
+            // console.log(response[i])
             $('.kudosList').append(`<div class = "card"><div class = "card-body">title:${response[i].title} <br>message:${response[i].body}</div></div>`);
         }
     });
