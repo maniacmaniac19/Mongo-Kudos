@@ -4,11 +4,16 @@ const Schema = mongoose.Schema;
 const kudosSchema = new Schema({
     title: String,
     body: String,
-to: [
+    to:
     {
-        type:Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "users"
-    }]
+    },
+    from:
+    {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+    }
 });
 
 const kudos = mongoose.model("kudos", kudosSchema);

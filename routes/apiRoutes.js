@@ -26,7 +26,8 @@ router.get('/users', function (req, res){
 router.get('/kudos', function(req, res){
     db.kudos.find({})
     .populate('to')
-    // add populate from
+    .populate('from')
+    
     .then(function(data){
         res.json(data);
     })
@@ -36,19 +37,20 @@ router.get('/kudos', function(req, res){
 });
 
 router.post('/kudos', function(req, res){
+    console.log("this is the req.body for the kudos post")
     console.log(req.body)
-    const userId = req.body.userId;
     const kudosNote = {
-        // to: req.body.to,
+        to: req.body.to,
         title: req.body.title,
-        body: req.body.body
+        body: req.body.body,
+        from: req.body.from
     }
+    console.log("This is the kudos note" )
+    console.log(kudosNote)
     db.kudos.create(kudosNote)
-    // .then(function(kudosData){
-    //     return users.findOneAndUpdate({_id:userId}, { $push: { kudos: kudosData._id}}, {new: true});
-    // })
     .then(function(usersData){
         res.json(usersData);
+        console.log('Entry added to kudos database')
     })
     .catch(function (err){
         res.json(err);
@@ -64,7 +66,7 @@ router.post('/users', function(req, res){
         res.json(err);
     });
 });
-
+// POSTMAN TESTING ROUTES FOR DATABASE
 router.get('/api/kudos', function (req, res) {
 	db.kudos.find({}).then(function (response, err) {
 		if (err) {
@@ -73,7 +75,7 @@ router.get('/api/kudos', function (req, res) {
 		res.json(response)
 	});
 });
-
+// POSTMAN TESTING ROUTES FOR DATABASE
 router.get('/api/users', function (req, res) {
 	db.users.find({}).then(function (response, err) {
 		if (err) {

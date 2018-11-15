@@ -22,7 +22,7 @@ $('.postKudos').on('click', function(event){
     console.log('Adding Kudos');
     let data = {
         to: $('.toOption').val(),
-        // from: $('.fromOption').val().trim(),
+        from: $('.fromOption').val().trim(),
         title: $('.kudosTitle').val(),
         body: $('.kudosBody').val()
     }
@@ -32,9 +32,10 @@ $('.postKudos').on('click', function(event){
         url: '/kudos',
         data: data
 }).then(function(response){
-    // console.log(response)
-    // console.log(data)
     console.log('this is the response from the server')
+    console.log(response)
+    console.log(data)
+    
     // data.to.val('')
     // data.title.val('')
     // data.body.val('')
@@ -52,7 +53,7 @@ $(document).ready(function(){
         JSON.stringify(response, null, 2)
         for(i=0; i< response.length; i++){
             // console.log(response[i])
-            $('.kudosList').append(`<div class = "card"><div class = "card-body">title:${response[i].title} <br>message:${response[i].body}</div></div>`);
+            $('.kudosList').append(`<div class = "card"><div class = "card-body">To: ${response[i].to} From: ${response[i].from} title:${response[i].title} <br>message:${response[i].body}</div></div>`);
         }
     });
 })
